@@ -1,6 +1,6 @@
 package com.emanuel.todo.util;
 
-public enum EstadoTarea {
+public enum TaskState {
 
     PENDIENTE,
     EN_PROGRESO,

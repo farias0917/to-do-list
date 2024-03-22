@@ -5,21 +5,23 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
-public class TagTask {
+public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "tarea_id")
-    private Task task;
+    @Column(nullable = false)
+    private String name;
 
-    private String tag;
-
+    @ManyToMany(mappedBy = "tags")
+    private List<Task> tasks;
 
 }

@@ -1,6 +1,6 @@
 package com.emanuel.todo.entity;
 
-import com.emanuel.todo.util.EstadoTarea;
+import com.emanuel.todo.util.TaskState;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,22 +15,35 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String title;
+
+    @Column(nullable = false)
     private String description;
-    private EstadoTarea state;
 
-    @OneToMany(mappedBy = "tag", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<TagTask> tags;
+    @Column(nullable = false)
+    private TaskState state;
+
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    private Person person;
+
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @JoinTable(name = "task_tag",
+            joinColumns = @JoinColumn(name = "task_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    private List<Tag> tags;
 
 
-    public Task(String title, String descripcion, EstadoTarea estado, List<TagTask> tags) {
+    public Task(String title, String description, TaskState state, List<Tag> tags) {
         this.title = title;
         this.description = description;
         this.state = state;
         this.tags = new ArrayList<>(tags);
     }
 
-    public void addTag(TagTask tag) {
+    public void addTag(Tag tag) {
         tags.add(tag);
     }
 }
