@@ -28,17 +28,17 @@ public class Person {
     @Column(nullable = false, unique = true)
     private String username;
 
-    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Task> tasks;
+    //@OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
+    //private List<Task> tasks;
 
-    public Person(String name, String lastName, String username, List<Task> tasks) {
+    public Person(String name, String lastName, String username) {
         this.name = name;
         this.lastName = lastName;
         this.username = username;
-        this.tasks = new ArrayList<>(tasks);
+        //this.tasks = new ArrayList<>(tasks);
     }
 
-    public void addTask(Task task) {
+   /* public void addTask(Task task) {
         tasks.add(task);
-    }
+    }*/
 }

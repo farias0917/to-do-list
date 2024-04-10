@@ -1,9 +1,8 @@
 package com.emanuel.todo.dto;
-import com.emanuel.todo.entity.Task;
+
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
 
 @Getter
 @Setter
@@ -20,7 +19,4 @@ public class PersonDto {
 
     @Column(nullable = false, unique = true)
     private String username;
-
-    private List<Task> tasks;
-
 }

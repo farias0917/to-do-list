@@ -7,10 +7,9 @@ import com.emanuel.todo.entity.Task;
 import java.util.List;
 
 public interface IPersonService {
-    void createPerson(String name, String lastName, String username);
+    Person createPerson(PersonDto personDto);
     PersonDto getPerson(String username);
     List<PersonDto> getAll();
-    void updatePerson(String username, String name, String lastName);
+    void updatePerson(PersonDto personDto);
     void deletePerson(String username);
-    List<Task> getTasks(String username);
 }

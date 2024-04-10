@@ -6,4 +6,5 @@ public interface Mapper<E, D> {
     public D fromEntityToDto(E e);
 
     public E fromDtoToEntity(D d);
+    public E fromDtoToEntity(D d,E e);
 }

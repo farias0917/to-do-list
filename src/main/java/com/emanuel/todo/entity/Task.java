@@ -2,6 +2,7 @@ package com.emanuel.todo.entity;
 
 import com.emanuel.todo.util.TaskState;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
